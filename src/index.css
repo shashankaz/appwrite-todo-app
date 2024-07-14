@@ -1,0 +1,186 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  padding: 10px;
+}
+
+.auth {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 500px;
+  margin: 0 auto;
+}
+
+.auth h2 {
+  margin-bottom: 20px;
+}
+
+.auth form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.auth form input {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.auth form button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.auth form button:hover {
+  background-color: #0056b3;
+}
+
+.auth p span {
+  color: #007bff;
+  cursor: pointer;
+}
+
+.auth p span:hover {
+  text-decoration: underline;
+}
+
+.auth .or-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.auth .or-divider::before,
+.auth .or-divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #ccc;
+}
+
+.auth .or-divider:not(:empty)::before {
+  margin-right: 0.25em;
+}
+
+.auth .or-divider:not(:empty)::after {
+  margin-left: 0.25em;
+}
+
+.auth .or-divider span {
+  padding: 0 10px;
+  color: #666;
+}
+
+.todo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  width: 500px;
+  margin: 0 auto;
+}
+
+.todo h2 {
+  margin-bottom: 20px;
+}
+
+.todo form {
+  display: flex;
+  width: 100%;
+}
+
+.todo form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.todo form button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.todo form button:hover {
+  background-color: #0056b3;
+}
+
+.todo ul {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.todo ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.todo ul li button {
+  padding: 5px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.todo ul li button:hover {
+  background-color: #0056b3;
+}
+
+.main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.main .nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  height: 60px;
+  margin-bottom: 50px;
+}
+
+.main .nav span {
+  font-size: 20px;
+}
+
+.main .nav button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  height: 100%;
+}
+
+.main .logout:hover {
+  background-color: #0056b3;
+}
+
+@media screen and (max-width: 550px) {
+  .auth,
+  .todo {
+    width: 100%;
+  }
+}
