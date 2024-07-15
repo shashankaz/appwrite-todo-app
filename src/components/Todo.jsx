@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { databases, account, ID, Permission, Role } from "../appwriteConfig";
+import {
+  databases,
+  account,
+  ID,
+  Permission,
+  Role,
+  Query,
+} from "../appwriteConfig";
 
 const TodoApp = () => {
   const [todos, setTodos] = useState([]);
@@ -20,20 +27,23 @@ const TodoApp = () => {
   }, []);
 
   useEffect(() => {
-    const fetchTodos = async () => {
-      try {
-        const response = await databases.listDocuments(
-          import.meta.env.VITE_DATABASE_ID,
-          import.meta.env.VITE_COLLECTION_ID
-        );
-        setTodos(response.documents);
-      } catch (error) {
-        console.error("Error fetching todos:", error);
-      }
-    };
+    if (user) {
+      const fetchTodos = async () => {
+        try {
+          const response = await databases.listDocuments(
+            import.meta.env.VITE_DATABASE_ID,
+            import.meta.env.VITE_COLLECTION_ID,
+            [Query.equal("userId", user.$id)]
+          );
+          setTodos(response.documents);
+        } catch (error) {
+          console.error("Error fetching todos:", error);
+        }
+      };
 
-    fetchTodos();
-  }, []);
+      fetchTodos();
+    }
+  }, [user]);
 
   const addTodo = async (e) => {
     e.preventDefault();
@@ -44,7 +54,7 @@ const TodoApp = () => {
         import.meta.env.VITE_DATABASE_ID,
         import.meta.env.VITE_COLLECTION_ID,
         ID.unique(),
-        { task: newTodo, completed: false },
+        { task: newTodo, completed: false, userId: user.$id },
         [
           Permission.read(Role.user(user.$id)),
           Permission.update(Role.user(user.$id)),
